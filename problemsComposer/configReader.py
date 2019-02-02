@@ -6,7 +6,7 @@ class Question:
         self.Prefix = None
         self.values = list()
         self.answer = dict()
-        self.quantity = dict()
+        # self.quantity = dict()
 
 class Problem:
     def __init__(self):
@@ -63,7 +63,7 @@ class ConfigReader:
             q.Prefix = raw_question["Prefix"]
             q.values = raw_question["values"]
             q.answer = raw_question["answer"]
-            q.quantity = raw_question["quantity"]
+            # q.quantity = raw_question["quantity"]
             problem.Questions.append(q)
 
         return problem

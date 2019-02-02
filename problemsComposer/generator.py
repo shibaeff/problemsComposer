@@ -28,28 +28,29 @@ class Generator:
 
         
 
-    def generate_problems(self):
+    def generate_problem(self):
         # just yields problem-value pairs to the generator
 
         # list of distinct quesiton types
-        for question in self.config_holder.Problem.Questions:
-            # value to ask in question
-            for value in question.quantity:
-                # number of question samples to generate 
-                for i in range(int(question.quantity[value])):
-                    # generating values
-                    equation = question.answer[value]
-                    equation = sympify(equation)   
-                    
-                    subdict = dict({
-                        (self.variables[var[2:]], eval(self.config_holder.ranges[var])) for var in self.config_holder.ranges
-                        })
-                    
-                    print(subdict)
+        
+        question_number = randint(0, len(self.config_holder.Problem.Questions)) - 1
+        question = self.config_holder.Problem.Questions[question_number]
+        value = choice(self.config_holder.Problem.Questions[question_number].values)
 
-                    ans = equation.subs(subdict)
+        self.logger.info("Chose value %s" % value)
+                
+        equation = question.answer[value]
+        equation = sympify(equation)   
+                    
+        subdict = dict({
+            (self.variables[var[2:]], eval(self.config_holder.ranges[var])) for var in self.config_holder.ranges
+            })
+                    
+        print(subdict)
 
-                    yield (self.generate_text(subdict, question.Prefix + value + "?"), ans)
+        ans = equation.subs(subdict)
+
+        return (self.generate_text(subdict, question.Prefix + value + "?"), ans)
 
 
         

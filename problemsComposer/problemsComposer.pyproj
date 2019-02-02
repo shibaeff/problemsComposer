@@ -14,7 +14,7 @@
     <IsWindowsApplication>False</IsWindowsApplication>
     <InterpreterId>Global|PythonCore|3.6</InterpreterId>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>testdir</CommandLineArguments>
+    <CommandLineArguments>testdir </CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -38,6 +38,9 @@
     <Compile Include="configReader.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="latexGen.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="problemsComposer.py" />
   </ItemGroup>
   <ItemGroup>
@@ -48,6 +51,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="testdir\ex.prtml" />
+    <Content Include="testdir\ltxtml" />
+    <Content Include="testdir\test" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
